@@ -74,28 +74,18 @@ let bars = document.querySelector('.bars'),
 bars.addEventListener('click',()=>{
     SideBar.classList.toggle("active");
 })
-  // تحديد المدينة والدولة وطريقة الحساب
-  const city = "Cairo";
-  const country = "Egypt";
-  const method = 5; // طريقة الحساب
-
   // رابط API الخاص بـ Aladhan
-  const apiUrl = `https://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=${method}`;
+  const apiUrl = `https://api.aladhan.com/v1/timingsByCity?city=Cairo&country=Egypt&method=8`;
 
   // جلب بيانات مواقيت الصلاة
   fetch(apiUrl)
       .then(response => {
-          if (!response.ok) {
-              throw new Error("خطأ في الاتصال بالـ API");
-          }
           return response.json();
       })
       .then(data => {
           if (data.code === 200) {
               const timings = data.data.timings;
               displayPrayerTimes(timings);
-          } else {
-              document.getElementById("prayer-times").innerText = "خطأ أثناء جلب مواقيت الصلاة.";
           }
       })
       .catch(error => {
