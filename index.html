@@ -36,7 +36,8 @@
           <li data-filter="hadith">أحاديث</li>
           <li data-filter="lectures">محاضرات</li>
           <li data-filter="bodcast">بودكاست</li>
-          <li data-filter="slah">أوقات الصلاة</li>
+          <li data-filter="pray">أوقات الصلاة</li>
+          <li data-filter="quran">القرآن الكريم</li>
           <li data-filter="footer">تواصل معنا</li>
         </ul>
         <div class="bars">
@@ -230,10 +231,37 @@
               <img src="./images/yasser.jpg" alt="">
            </div>  
     <!--end pray time section-->
-    <section class="slah">
-      <h3>مواقيت الصلاة</h3>
-    <div id="prayer-times">جاري تحميل مواقيت الصلاة...</div>
-    </section>
+   
+      <section class="pray">
+        <div class="containeree">
+          <h3>مواقيت الصلاة</h3>
+          <div id="prayer-times">
+              <!-- سيتم عرض أوقات الصلاة هنا -->
+          </div>
+      </div>
+      </section>
+    
+<section class="quran">
+  <div class="containerss">
+    <!-- قائمة السور -->
+    <div id="surah-list" class="surah-list">
+        <h3>القرآن الكريم</h3>
+        <div id="surah-buttons" class="surah-buttons"></div>
+    </div>
+
+    <!-- محتوى السورة -->
+    <div id="surah-content" class="surah-content" style="display: none;">
+        <div class="headerss">
+            <h1 id="surah-title" style="order: 1;">السورة</h1> <!-- عنوان السورة سيبقى في الجهة اليمنى -->
+            <button class="back-button" onclick="goBack()">رجوع  ⟵</button>
+        </div>
+        <div id="ayah-list" class="ayah-list">
+            <!-- سيتم تحميل الآيات هنا -->
+        </div>
+    </div>
+</div>
+</section>
+
 
     <!--footer-->
     <section class="footer">

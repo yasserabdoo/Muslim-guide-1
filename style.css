@@ -456,12 +456,6 @@ a{
         margin: 15px 0;
     }
 }
-@media (max-width: 600px) {
-    #prayer-times {
-        width: 90%;
-        padding: 15px;
-    }
-}
 #prayer-times {
     margin: 20px auto;
     padding: 20px;
@@ -496,9 +490,218 @@ h5:hover {
     background-color: #d4edda;
     color: #155724;
 }
-#dhikr-container {
-    margin-top: 20px;
-    background-color: #f1f1f1;
+
+.containerss {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 900px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.surah-list h1 {
+    text-align: center;
+    color: #43a047;
+    margin-bottom: 20px;
+    font-family: 'Cairo', sans-serif;
+}
+
+.surah-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.surah-buttons button {
+    font-family: 'Cairo', sans-serif;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #43a047;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.surah-buttons button:hover {
+    background-color: #43a047;
+    transform: scale(1.05);
+}
+
+.surah-content {
+    background: white;
     padding: 20px;
     border-radius: 8px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.headerss {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.back-button {
+    order: 2; /* لضمان ظهور الزر في الجهة اليسرى */
+    font-family: 'Cairo', sans-serif;
+    padding: 10px 15px;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #e84118;
+    transform: scale(1.1);
+}
+
+.ayah-list {
+    margin-top: 20px;
+}
+
+.ayah {
+    font-family: 'Cairo', sans-serif;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.8;
+    padding: 15px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #43a047;
+}
+
+.ayah-number {
+    color: #43a047;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+/* لون خاص للسورة عند العرض */
+.active-surah {
+    font-family: 'Cairo', sans-serif;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/**time**/
+
+.containeree {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.prayer-time {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.prayer-time:hover {
+    background-color: #66bb6a;
+}
+
+.prayer-time:active {
+    transform: scale(0.95);
+}
+
+.prayer-time.animate {
+    animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@media (max-width: 600px) {
+    #prayer-times {
+        width: 90%;
+        padding: 15px;
+    }
+}
+@media (max-width: 430px) {
+    .containerss {
+        max-width: 400px;
+    }
+}
+@media (max-width: 1412px) {
+    .containerss {
+        max-width: 1100px;
+    }
+}
+@media (max-width: 1108px) {
+    .containerss {
+        max-width: 1000px;
+    }
+}
+@media (max-width: 1020px) {
+    .containerss {
+        max-width: 900px;
+    }
+}
+@media (max-width: 916px) {
+    .containerss {
+        max-width: 800px;
+    }
+}
+@media (max-width: 812px) {
+    .containerss {
+        max-width: 700px;
+    }
+}
+@media (max-width: 708px) {
+    .containerss {
+        max-width: 600px;
+    }
+}
+@media (max-width: 612px) {
+    .containerss {
+        max-width: 500px;
+    }
+}
+@media (max-width: 508px) {
+    .containerss {
+        max-width: 400px;
+    }
+}
+@media (max-width: 404px) {
+    .containerss {
+        max-width: 350px;
+    }
+}
+@media (max-width: 356px) {
+    .containerss {
+        max-width: 330px;
+    }
+}
+@media (max-width: 332px) {
+    .containerss {
+        max-width: 310px;
+    }
+    .surah-button{
+        padding: 30px 50px;
+    }
 }

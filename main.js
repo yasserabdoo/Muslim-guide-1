@@ -48,7 +48,6 @@ HadithChanger();
         }
     })
 }
-//pray time
 
 // link section
 let section = document.querySelectorAll("section"),
@@ -74,63 +73,110 @@ let bars = document.querySelector('.bars'),
 bars.addEventListener('click',()=>{
     SideBar.classList.toggle("active");
 })
-  // رابط API الخاص بـ Aladhan
-  const apiUrl = `https://api.aladhan.com/v1/timingsByCity?city=Dakahlia&country=Egypt&method=5`;
 
-  // جلب بيانات مواقيت الصلاة
-  fetch(apiUrl)
-      .then(response => {
-          return response.json();
-      })
-      .then(data => {
-          if (data.code === 200) {
-              const timings = data.data.timings;
-              displayPrayerTimes(timings);
-          }
-      })
-      .catch(error => {
-          document.getElementById("prayer-times").innerText = "خطأ: " + error.message;
-      });
 
-  // عرض مواقيت الصلاة
-  function displayPrayerTimes(timings) {
-      const container = document.getElementById("prayer-times");
-      container.innerHTML = "<ul>";
 
-      for (const prayer in timings) {
-          // استثناء الإمساك
-          if (prayer === "Imsak") continue;
+const prayerTimesContainer = document.getElementById("prayer-times");
 
-          const time24 = timings[prayer];
-          const time12 = convertTo12Hour(time24);
-          const prayerName = translatePrayer(prayer);
-          container.innerHTML += `<h5>${prayerName}: ${time12}</h5>`;
-      }
+function convertTo12HourFormat(time) {
+    const [hours, minutes] = time.split(":").map(Number);
+    const period = hours >= 12 ? "م" : "ص";
+    const adjustedHours = hours % 12 === 0 ? 12 : hours % 12;
+    return `${adjustedHours}:${minutes < 10 ? "0" + minutes : minutes} ${period}`;
+}
 
-      container.innerHTML += "</h5>";
-  }
+async function fetchPrayerTimes() {
+    try {
+        const response = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=Dakahlia&country=Egypt&method=8&language=ar`);
+        const data = await response.json();
+        const timings = data.data.timings;
 
-  // تحويل الوقت من 24 ساعة إلى 12 ساعة باللغة العربية
-  function convertTo12Hour(time24) {
-      const [hour, minute] = time24.split(":");
-      let hour12 = parseInt(hour) % 12 || 12;
-      const period = parseInt(hour) >= 12 ? "م" : "ص";
-      return `${hour12}:${minute} ${period}`;
-  }
+        const prayerNames = {
+            Fajr: "الفجر",
+            Sunrise: "الشروق",
+            Dhuhr: "الظهر",
+            Asr: "العصر",
+            Sunset: "الغروب",
+            Maghrib: "المغرب",
+            Isha: "العشاء"
+        };
 
-  // ترجمة أسماء الصلوات إلى العربية
-  function translatePrayer(prayer) {
-      const translations = {
-          Fajr: "الفجر",
-          Sunrise: "الشروق",
-          Dhuhr: "الظهر",
-          Asr: "العصر",
-          Maghrib: "المغرب",
-          Isha: "العشاء",
-          Lastthird: "الثلث الأخير",
-          Firstthird: "الثلث الأول",
-          Midnight: "منتصف الليل",
-          Sunset: "غروب الشمس",
-      };
-      return translations[prayer] || prayer;
-  }
+        const prayerTimes = {
+            Fajr: convertTo12HourFormat(timings.Fajr),
+            Sunrise: convertTo12HourFormat(timings.Sunrise),
+            Dhuhr: convertTo12HourFormat(timings.Dhuhr),
+            Asr: convertTo12HourFormat(timings.Asr),
+            Sunset: convertTo12HourFormat(timings.Sunset),
+            Maghrib: convertTo12HourFormat(timings.Maghrib),
+            Isha: convertTo12HourFormat(timings.Isha)
+        };
+
+        prayerTimesContainer.innerHTML = Object.keys(prayerNames)
+            .map(prayer => `
+                <div class="prayer-time animate">
+                    <span>${prayerNames[prayer]}</span>
+                    <span>${prayerTimes[prayer]}</span>
+                </div>
+            `)
+            .join("");
+    } catch (error) {
+        console.error("حدث خطأ أثناء جلب مواقيت الصلاة:", error);
+        prayerTimesContainer.innerHTML = "<p>تعذر تحميل مواقيت الصلاة.</p>";
+    }
+}
+
+fetchPrayerTimes();
+
+const surahButtons = document.getElementById('surah-buttons');
+const surahList = document.getElementById('surah-list');
+const surahContent = document.getElementById('surah-content');
+const surahTitle = document.getElementById('surah-title');
+const ayahList = document.getElementById('ayah-list');
+
+fetch('https://api.alquran.cloud/v1/surah')
+    .then(response => response.json())
+    .then(data => {
+        const surahs = data.data;
+        surahs.forEach(surah => {
+            const button = document.createElement('button');
+            button.textContent = `${surah.number}. ${surah.name}`;
+            button.onclick = () => loadSurah(surah.number, surah.name);
+            surahButtons.appendChild(button);
+        });
+    })
+    .catch(error => console.error('خطأ أثناء تحميل قائمة السور:', error));
+
+// تحميل محتوى السورة
+function loadSurah(surahId, surahName) {
+    surahList.style.display = 'none';
+    surahContent.style.display = 'block';
+
+    // إضافة اللون الأخضر لعنوان السورة
+    surahTitle.textContent = surahName;
+    surahTitle.classList.add('active-surah'); // إضافة اللون الأخضر
+
+    ayahList.innerHTML = '';
+
+    fetch(`https://api.alquran.cloud/v1/surah/${surahId}`)
+        .then(response => response.json())
+        .then(data => {
+            const ayahs = data.data.ayahs;
+            ayahs.forEach(ayah => {
+                const ayahDiv = document.createElement('div');
+                ayahDiv.className = 'ayah';
+                ayahDiv.innerHTML = `
+                    <span class="ayah-number">(${ayah.numberInSurah})</span>
+                    ${ayah.text}
+                `;
+                ayahList.appendChild(ayahDiv);
+            });
+        })
+        .catch(error => console.error('خطأ أثناء تحميل السورة:', error));
+}
+
+// الرجوع إلى قائمة السور
+function goBack() {
+    surahList.style.display = 'block';
+    surahContent.style.display = 'none';
+    surahTitle.classList.remove('active-surah'); // إزالة اللون الأخضر عند الرجوع
+}
