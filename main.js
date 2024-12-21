@@ -48,6 +48,7 @@ HadithChanger();
         }
     })
 }
+//pray time
 
 // link section
 let section = document.querySelectorAll("section"),
@@ -73,3 +74,73 @@ let bars = document.querySelector('.bars'),
 bars.addEventListener('click',()=>{
     SideBar.classList.toggle("active");
 })
+  // تحديد المدينة والدولة وطريقة الحساب
+  const city = "Cairo";
+  const country = "Egypt";
+  const method = 5; // طريقة الحساب
+
+  // رابط API الخاص بـ Aladhan
+  const apiUrl = `https://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=${method}`;
+
+  // جلب بيانات مواقيت الصلاة
+  fetch(apiUrl)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error("خطأ في الاتصال بالـ API");
+          }
+          return response.json();
+      })
+      .then(data => {
+          if (data.code === 200) {
+              const timings = data.data.timings;
+              displayPrayerTimes(timings);
+          } else {
+              document.getElementById("prayer-times").innerText = "خطأ أثناء جلب مواقيت الصلاة.";
+          }
+      })
+      .catch(error => {
+          document.getElementById("prayer-times").innerText = "خطأ: " + error.message;
+      });
+
+  // عرض مواقيت الصلاة
+  function displayPrayerTimes(timings) {
+      const container = document.getElementById("prayer-times");
+      container.innerHTML = "<ul>";
+
+      for (const prayer in timings) {
+          // استثناء الإمساك
+          if (prayer === "Imsak") continue;
+
+          const time24 = timings[prayer];
+          const time12 = convertTo12Hour(time24);
+          const prayerName = translatePrayer(prayer);
+          container.innerHTML += `<h5>${prayerName}: ${time12}</h5>`;
+      }
+
+      container.innerHTML += "</h5>";
+  }
+
+  // تحويل الوقت من 24 ساعة إلى 12 ساعة باللغة العربية
+  function convertTo12Hour(time24) {
+      const [hour, minute] = time24.split(":");
+      let hour12 = parseInt(hour) % 12 || 12;
+      const period = parseInt(hour) >= 12 ? "م" : "ص";
+      return `${hour12}:${minute} ${period}`;
+  }
+
+  // ترجمة أسماء الصلوات إلى العربية
+  function translatePrayer(prayer) {
+      const translations = {
+          Fajr: "الفجر",
+          Sunrise: "الشروق",
+          Dhuhr: "الظهر",
+          Asr: "العصر",
+          Maghrib: "المغرب",
+          Isha: "العشاء",
+          Lastthird: "الثلث الأخير",
+          Firstthird: "الثلث الأول",
+          Midnight: "منتصف الليل",
+          Sunset: "غروب الشمس",
+      };
+      return translations[prayer] || prayer;
+  }

@@ -456,3 +456,43 @@ a{
         margin: 15px 0;
     }
 }
+@media (max-width: 600px) {
+    #prayer-times {
+        width: 90%;
+        padding: 15px;
+    }
+}
+#prayer-times {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    max-width: 1330px;
+}
+
+h5 {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+h5 {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h5:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+h5:hover {
+    background-color: #d4edda;
+    color: #155724;
+}
