@@ -75,7 +75,7 @@ bars.addEventListener('click',()=>{
     SideBar.classList.toggle("active");
 })
   // رابط API الخاص بـ Aladhan
-  const apiUrl = `https://api.aladhan.com/v1/timingsByCity?city=Cairo&country=Egypt&method=8`;
+  const apiUrl = `https://api.aladhan.com/v1/timingsByCity?city=Dakahlia&country=Egypt&method=5`;
 
   // جلب بيانات مواقيت الصلاة
   fetch(apiUrl)
