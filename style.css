@@ -228,7 +228,7 @@ section h3::before{
     text-align: center;
 }
 .lectures-container .left iframe{
-    width: 100%;
+    width: 95%;
     height: 400px;
     border-radius: 6px ;
     margin-right: 5px;
@@ -426,6 +426,9 @@ a{
         line-height: 1.9;
         font-size: 25px;
         margin-bottom: 30px;
+    }
+    .lectures-container .left iframe{
+        width: 100%;
     }
     .header .bars{
         display: block;
