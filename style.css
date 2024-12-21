@@ -491,6 +491,11 @@ h5:hover {
     color: #155724;
 }
 
+@font-face {
+    font-family: 'Amiri Quran';
+    src: url('path/to/amiri-quran.ttf') format('truetype');
+}
+
 .containerss {
     margin: 0 auto;
     padding: 20px;
@@ -502,7 +507,7 @@ h5:hover {
     text-align: center;
     color: #43a047;
     margin-bottom: 20px;
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo-Bold', sans-serif;
 }
 
 .surah-buttons {
@@ -512,7 +517,7 @@ h5:hover {
 }
 
 .surah-buttons button {
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo-Bold', sans-serif;
     padding: 15px;
     border: none;
     border-radius: 8px;
@@ -544,7 +549,7 @@ h5:hover {
 
 .back-button {
     order: 2; /* لضمان ظهور الزر في الجهة اليسرى */
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo-Bold', sans-serif;
     padding: 10px 15px;
     background-color: #ff4757;
     color: white;
@@ -565,7 +570,7 @@ h5:hover {
 }
 
 .ayah {
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo-Bold', sans-serif;
     font-size: 18px;
     color: #333;
     margin-bottom: 15px;
@@ -585,10 +590,13 @@ h5:hover {
 
 /* لون خاص للسورة عند العرض */
 .active-surah {
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo-Bold', sans-serif;
     color: #28a745;
     font-weight: bold;
 }
+
+
+
 
 /**time**/
 
