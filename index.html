@@ -34,6 +34,7 @@
         <ul>
           <li data-filter="main" class="active">الصفحة الرئيسية</li>
           <li data-filter="hadith">أحاديث</li>
+          <li data-filter="azkar">أذكار</li>
           <li data-filter="lectures">محاضرات</li>
           <li data-filter="bodcast">بودكاست</li>
           <li data-filter="pray">أوقات الصلاة</li>
@@ -74,6 +75,31 @@
         </div>
       </div>
     </section>
+    <!-- azkar -->
+
+     <section class="azkar">
+      <h3>الاذكار</h3>
+      <body>
+        <div class="azkar-section">
+            <div class="azkar-buttons">
+                <button id="morning-btn" onclick="showAzkar('morning')">
+                    أذكار الصباح
+                    <span class="checkmark" style="display: none;">✓</span>
+                </button>
+                <button id="evening-btn" onclick="showAzkar('evening')">
+                    أذكار المساء
+                    <span class="checkmark" style="display: none;">✓</span>
+                </button>
+            </div>
+            <div id="azkar-content" class="azkar-content">
+                <div id="azkar-text"></div>
+            </div>
+        </div>
+     </section>
+      
+
+
+    <!-- end azkar -->
     <!--end of hadith section-->
     <!--lectures section-->
     <section class="lectures">
