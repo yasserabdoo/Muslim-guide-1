@@ -741,7 +741,8 @@ h5:hover {
 .azkar-section {
     margin: 20px auto;
     padding: 20px;
-    max-width: 900px;
+    max-width: 1400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .azkar-buttons {
@@ -784,7 +785,7 @@ h5:hover {
     background: #ffffff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     position: relative;
     text-align: center;
 }
@@ -795,8 +796,8 @@ h5:hover {
     border-radius: 8px;
     padding: 15px;
     margin: 10px auto;
-    max-width: 600px;
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2);
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -978,3 +979,4 @@ h5:hover {
         padding: 0px 50px;
     }
 }
+
