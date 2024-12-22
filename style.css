@@ -492,8 +492,13 @@ h5:hover {
 }
 
 @font-face {
-    font-family: 'Amiri Quran';
-    src: url('path/to/amiri-quran.ttf') format('truetype');
+    font-family: 'QuranFont';
+    src: url('path/to/quran-font.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'QuranFont';
+    src: url('path/to/quran-font.ttf') format('truetype');
 }
 
 .containerss {
@@ -507,9 +512,8 @@ h5:hover {
     text-align: center;
     color: #43a047;
     margin-bottom: 20px;
-    font-family: 'Cairo-Bold', sans-serif;
+    font-family: 'QuranFont', sans-serif;
 }
-
 .surah-buttons {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -517,7 +521,7 @@ h5:hover {
 }
 
 .surah-buttons button {
-    font-family: 'Cairo-Bold', sans-serif;
+    font-family: 'QuranFont', sans-serif;
     padding: 15px;
     border: none;
     border-radius: 8px;
@@ -548,8 +552,8 @@ h5:hover {
 }
 
 .back-button {
-    order: 2; /* لضمان ظهور الزر في الجهة اليسرى */
-    font-family: 'Cairo-Bold', sans-serif;
+    order: 2;
+    font-family: 'QuranFont', sans-serif;
     padding: 10px 15px;
     background-color: #ff4757;
     color: white;
@@ -565,12 +569,8 @@ h5:hover {
     transform: scale(1.1);
 }
 
-.ayah-list {
-    margin-top: 20px;
-}
-
 .ayah {
-    font-family: 'Cairo-Bold', sans-serif;
+    font-family: 'QuranFont', sans-serif;
     font-size: 18px;
     color: #333;
     margin-bottom: 15px;
@@ -588,13 +588,11 @@ h5:hover {
     margin-left: 5px;
 }
 
-/* لون خاص للسورة عند العرض */
 .active-surah {
-    font-family: 'Cairo-Bold', sans-serif;
+    font-family: 'QuranFont', sans-serif;
     color: #28a745;
     font-weight: bold;
 }
-
 
 
 
