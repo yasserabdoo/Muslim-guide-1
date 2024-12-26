@@ -339,8 +339,3 @@ window.onload = function() {
 };
 
 
-document.getElementById('logo').addEventListener('click', function () {
-    // أضف أي إجراءات هنا
-    console.log('الشعار تم الضغط عليه!');
-    location.reload(); // يقوم بتحديث الصفحة
-  });
