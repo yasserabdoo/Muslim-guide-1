@@ -337,3 +337,10 @@ function toggleVideos(boxNumber) {
 window.onload = function() {
     toggleVideos(1);
 };
+
+
+document.getElementById('logo').addEventListener('click', function () {
+    // أضف أي إجراءات هنا
+    console.log('الشعار تم الضغط عليه!');
+    location.reload(); // يقوم بتحديث الصفحة
+  });

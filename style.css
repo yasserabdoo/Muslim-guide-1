@@ -113,6 +113,8 @@ section h3::before{
     font-family:'thuluth-decorated';
     font-size: 55px;
     cursor: pointer;
+    color: #fff;
+    text-decoration: none;
 }
 /** end HEADER **/
 /** main section **/
