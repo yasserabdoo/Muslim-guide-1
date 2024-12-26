@@ -302,3 +302,38 @@ function decreaseCount(type, index) {
 document.addEventListener('DOMContentLoaded', () => {
     showAzkar('morning');
 });
+
+let currentVideoBox = null; // المتغير لتخزين الفيديو المفتوح حاليًا
+
+// عند الضغط على الزر لفتح الفيديو
+function toggleVideos(boxNumber) {
+    const videoBox = document.getElementById(`video-box-${boxNumber}`);
+    const box = document.getElementById(`box-${boxNumber}`);
+
+    // إذا كان هناك فيديو مفتوح حاليًا، قم بإخفاءه
+    if (currentVideoBox && currentVideoBox !== videoBox) {
+        currentVideoBox.classList.remove('open'); // إزالة الكلاس open لإخفاء الفيديو السابق
+        currentVideoBox.style.left = '-650px'; // إخفاء الفيديو السابق وتحريكه لليسار
+        const previousBox = document.getElementById(`box-${currentVideoBox.id.split('-')[2]}`);
+        previousBox.style.transform = 'none'; // إزالة تأثير التكبير
+    }
+
+    // فتح الفيديو الجديد
+    if (videoBox.style.display === 'none' || videoBox.style.display === '') {
+        videoBox.style.display = 'block';
+        videoBox.classList.add('open'); // إضافة الكلاس open لجعل الفيديو يظهر في مكانه
+        box.style.transform = 'scale(0.8)'; // تصغير المربع الأول
+        currentVideoBox = videoBox; // تعيين الفيديو الحالي
+    } else {
+        videoBox.style.display = 'none';
+        videoBox.classList.remove('open'); // إزالة الكلاس open لإخفاء الفيديو
+        videoBox.style.left = '-650px'; // إخفاء الفيديو الثاني وتحريكه لليسار
+        box.style.transform = 'none'; // إعادة المربع إلى حجمه الطبيعي
+        currentVideoBox = null; // إلغاء الفيديو المفتوح
+    }
+}
+
+// فتح الفيديو الأول افتراضيًا عند تحميل الصفحة
+window.onload = function() {
+    toggleVideos(1);
+};
