@@ -150,10 +150,28 @@ section h3::before{
     position: relative;
     transition: .3s all ease-in-out;
     padding: 5px 15px;
+    margin-bottom: 10px;
 }
 .title .btn i{
     font-size: 25px;
     margin-right: 20px;
+}
+h6 {
+    background: #232323;
+    width: 100%; /* عرض العنصر سيكون 90% من عرض الشاشة */
+    max-width: 409px; /* الحد الأقصى لعرض العنصر 406 بكسل */
+    padding: 1em; /* مسافة داخلية باستخدام وحدة نسبية */
+    border-radius: 5px; /* الزوايا المستديرة كما هي */
+    font-size: 17px; /* حجم الخط باستخدام وحدة نسبية */
+    margin: 0 ; /* مسافة خارجية من الأعلى والأسفل، ومحاذاة للمنتصف */
+    margin-top: 50px; /* مسافة خارجية من الأعلى والأسفل، ومحاذاة للمنتصف */
+    text-align: center; /* محاذاة النص داخل العنصر إلى المنتصف */
+    transition: .6s all ease-in-out;
+    margin-right: 2.3px;
+}
+h6:hover{
+    scale: 1.08;
+    background: blue;
 }
 .title .btn::after{
     content: "";
@@ -171,6 +189,10 @@ section h3::before{
 }
 .title .btn:hover::after{
     width: 100%;
+}
+.title .btn i .pi
+{
+    background: #232323;
 }
 /** end main section **/
 /**Hadith section**/
@@ -384,6 +406,12 @@ a{
     margin: 15px ;
     font-size: 35px;
     color: #fff;
+}
+
+@media (max-width: 768px) {
+    .footer .copyright {
+        font-size: 12px; /* تصغير حجم النص على الشاشات الصغيرة */
+    }
 }
 /**end footer**/
 /** scroll botton**/
